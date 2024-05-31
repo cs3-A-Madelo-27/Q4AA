@@ -129,12 +129,13 @@
         </div>
     </div>
     <script>
-        var username = localStorage.getItem('username');
-        var email = localStorage.getItem('email');
+        var loggedIn = localStorage.getItem('loggedIn'); // Check if the user is logged in
 
-        if (username && email) {
-            document.getElementById('username').textContent = username;
-            document.getElementById('email').textContent = email;
+        if (loggedIn) {
+            var username = localStorage.getItem('username'); // Retrieve stored username
+            var email = localStorage.getItem('email'); // Retrieve stored email
+            document.getElementById('username').textContent = username; // Display username
+            document.getElementById('email').textContent = email; // Display email
         } else {
             document.getElementById('no-account-msg').style.display = 'block';
         }
