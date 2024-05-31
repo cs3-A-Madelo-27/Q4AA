@@ -110,16 +110,17 @@
         <a class="link" href="signup.html">Don't have an account? Sign up</a>
     </div>
 
-    <script>
+     <script>
         function login() {
             var username = document.getElementById('username').value;
             var password = document.getElementById('password').value;
-            var storedUsername = localStorage.getItem('username');
-            var storedPassword = localStorage.getItem('password');
+            var storedUsername = localStorage.getItem('username'); // Retrieve stored username
+            var storedPassword = localStorage.getItem('password'); // Retrieve stored password
             var passwordError = document.getElementById('password_error');
 
             if (username === storedUsername && password === storedPassword) {
-                window.location.href = 'index.html';
+                localStorage.setItem('loggedIn', true); // Set a flag indicating the user is logged in
+                window.location.href = 'index.html'; // Redirect to homepage
             } else {
                 passwordError.innerText = "Invalid username or password";
             }
