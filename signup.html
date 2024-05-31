@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign Up - Paleo-ONTO-Logic!</title>
+    <meta charset="UTF-8">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pirata+One&display=swap');
+
+        body {
+            margin: 0;
+            font-family: 'Pirata One', cursive;
+            font-size: 16px;
+            line-height: 1.6;
+            background-color: #f5f5dc;
+            text-align: center;
+            padding: 50px;
+        }
+        header {
+            background-color: rgba(245, 245, 220, 0.8);
+            color: #8B4513;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .navButton {
+            text-decoration: none;
+            color: #8B4513;
+            padding: 12px 24px;
+            border-radius: 5px;
+            margin-right: 20px;
+            border: 1px solid #8B4513;
+        }
+
+        .logo {
+            text-decoration: none;
+            color: #8B4513;
+            padding: 12px 0;
+            margin-left: 310px;
+            margin-right: 310px;
+            font-size: 24px;
+            letter-spacing: 3px;
+        }
+
+        .navButton:hover {
+            background-color: #DEB887;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        li {
+            display: inline;
+        }
+
+        .login-box {
+            background-color: rgba(245, 245, 220, 0.8);
+            border: 2px solid #8B4513;
+            border-radius: 10px;
+            padding: 20px;
+            width: 300px;
+            margin: 0 auto;
+        }
+        .login-box input, .login-box textarea {
+            display: block;
+            margin: 10px auto;
+            padding: 10px;
+            width: 80%;
+        }
+        .login-box button {
+            padding: 10px 20px;
+            background-color: #8B4513;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            margin: 10px;
+        }
+        .login-box button:hover {
+            background-color: #DEB887;
+        }
+        .error {
+            color: red;
+            font-size: 12px;
+        }
+        .link {
+            color: #8B4513;
+            text-decoration: none;
+            display: block;
+            margin: 10px;
+        }
+        .link:hover {
+            color: #DEB887;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a class="navButton" href="account.html">Account</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="login-box">
+        <h2>Sign Up</h2>
+        <input type="text" id="name" placeholder="Name" required>
+        <input type="text" id="username" placeholder="Preferred Username" required>
+        <input type="email" id="email" placeholder="Email" required>
+        <input type="text" id="address" placeholder="Address" required>
+        <textarea id="interests" placeholder="A short paragraph on your interests" required></textarea>
+        <input type="password" id="password" placeholder="Password" required>
+        <input type="password" id="confirm_password" placeholder="Confirm Password" required>
+        <div id="password_error" class="error"></div>
+        <button onclick="signup()">Sign Up</button>
+        <button onclick="resetForm()">Reset</button>
+        <div>
+            <a class="nav-link" href="login.html">Already have an account? Log in</a>
+        </div>
+    </div>
+
+    <script>
+        function signup() {
+            var name = document.getElementById('name').value;
+            var username = document.getElementById('username').value;
+            var email = document.getElementById('email').value;
+            var address = document.getElementById('address').value;
+            var interests = document.getElementById('interests').value;
+            var password = document.getElementById('password').value;
+            var confirmPassword = document.getElementById('confirm_password').value;
+            var passwordError = document.getElementById('password_error');
+
+            if (password !== confirmPassword) {
+                passwordError.innerText = "Passwords do not match!";
+                return;
+            } else {
+                passwordError.innerText = "";
+            }
+
+            if (name && username && email && address && interests && password && confirmPassword) {
+                var userDetails = {
+                    name: name,
+                    username: username,
+                    email: email,
+                    address: address,
+                    interests: interests,
+                    password: password
+                };
+                localStorage.setItem('userDetails', JSON.stringify(userDetails));
+                localStorage.setItem('username', username);
+                window.location.href = 'index.html';
+            } else {
+                alert('Please fill in all fields');
+            }
+        }
+
+        function resetForm() {
+            document.getElementById('name').value = '';
+            document.getElementById('username').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('address').value = '';
+            document.getElementById('interests').value = '';
+            document.getElementById('password').value = '';
+            document.getElementById('confirm_password').value = '';
+            document.getElementById('password_error').innerText = '';
+        }
+    </script>
+</body>
+</html>

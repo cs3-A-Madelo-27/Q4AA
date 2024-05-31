@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Paleo-ONTO-Logic!</title>
+    <meta charset="UTF-8">
+    <meta name="author" content="Athena">
+    <meta name="keywords" content="HTML, CSS, JavaScript">
+    <meta name="revised" content="31/05/2024">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pirata+One&display=swap');
+
+        body {
+            margin: 0;
+            font-family: 'Pirata One', cursive;
+            font-size: 16px;
+            line-height: 1.6;
+            background-image: url('duria.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            background-color: rgba(255, 255, 255, 0.7); /* Translucent white background */
+        }
+
+        header {
+            background-color: rgba(245, 245, 220, 0.8);
+            color: #8B4513;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .navButton {
+            text-decoration: none;
+            color: #8B4513;
+            padding: 12px 24px;
+            border-radius: 5px;
+            margin-right: 20px;
+            border: 1px solid #8B4513;
+            background-color: transparent; /* Transparent background */
+        }
+
+        .logo {
+            text-decoration: none;
+            color: #8B4513;
+            padding: 12px 0;
+            margin-left: 310px;
+            margin-right: 310px;
+            font-size: 24px;
+            letter-spacing: 3px;
+        }
+
+        .navButton:hover {
+            background-color: #DEB887;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        li {
+            display: inline;
+        }
+
+        .container {
+            text-align: center;
+            padding-top: 20px;
+        }
+
+        img {
+            width: 400px;
+            display: block;
+            margin: 0 auto;
+            border: 5px solid #8B4513;
+            border-radius: 20px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        img:hover {
+            transform: scale(1.1);
+        }
+
+        .text-box {
+            background-color: rgba(245, 245, 220, 0.8);
+            border: 2px solid #8B4513;
+            border-radius: 10px;
+            padding: 20px;
+            width: 60%;
+            margin: 20px auto;
+            color: #8B4513;
+        }
+
+        .navButton, .loginButton {
+            text-decoration: none;
+            color: #8B4513;
+            padding: 12px 24px;
+            border-radius: 5px;
+            margin-right: 20px;
+            border: 1px solid #8B4513;
+        }
+
+        .loginButton:hover, .navButton:hover {
+            background-color: #DEB887;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a class="navButton" href="history.html">History</a></li>
+                <li><a class="navButton" href="fossils.html">Fossils</a></li>
+                <li><a class="logo" href="index.html">Pale-ONTO-Logic!</a></li>
+                <li><a class="navButton" href="dinosaurs.html">Dinosaurs</a></li>
+                <li><a class="navButton" href="account.html">Account</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="text-box">
+            <h2>User Account</h2>
+            <p>
+                Username: <span id="username">example</span><br>
+                Email: <span id="email">hellosiralvin@example.com</span><br>
+                <span id="no-account-msg" style="display: none;">No account found.</span>
+            </p>
+        </div>
+        <div>
+            <a class="loginButton" href="signup.html">Sign Up</a>
+            <a class="loginButton" href="login.html">Login</a>
+        </div>
+    </div>
+    <script>
+        var username = localStorage.getItem('username');
+        var email = localStorage.getItem('email');
+
+        if (username && email) {
+            document.getElementById('username').textContent = username;
+            document.getElementById('email').textContent = email;
+        } else {
+            document.getElementById('no-account-msg').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
